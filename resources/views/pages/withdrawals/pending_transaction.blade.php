@@ -130,6 +130,26 @@
                 }
             })
     })
+
+    $(document).on('click','.remove',function(){
+        let id=$(this).data('id');
+        console.log(id)
+        Swal.fire({
+            title: 'Are you sure! delete it ?',
+            showCancelButton: true,
+            confirmButtonText: 'Ok',
+            }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                axios.get("{{URL::to('admin/cancel_withdraw')}}/"+id)
+                .then(res=>{
+                    console.log(res)
+                    $('.data-table').DataTable().ajax.reload();
+                })
+            }
+        })
+        
+    })
     //ajax request from employee.js
 </script>
 @endsection

@@ -62,6 +62,7 @@ Route::get('/admin/balance_edit/{id}', 'BalanceController@EditForm');
 Route::get('/admin/withdraw_transaction', 'WidthdrawController@AllData');
 Route::get('/admin/withdraw_pending', 'WidthdrawController@PendingData');
 Route::get('/admin/aprove_withdraw/{id}', 'WidthdrawController@Aprove');
+Route::get('/admin/cancel_withdraw/{id}', 'WidthdrawController@destroy');
 // generation controller
 Route::get('/admin/generation', 'GenerationController@Form');
 Route::post('/admin/generation', 'GenerationController@Create');
@@ -141,9 +142,8 @@ Route::POST('monthly/founders/balance' , 'FounderBalanceController@monthlyadd')-
 Route::get('founder/edit/{id}' , 'FounderBalanceController@edit')->name('founder.edit');
 Route::POST('founder/update' , 'FounderBalanceController@update')->name('founder.update');
 // Route::resource('/admin/setting','SettingController');
+Route::resource('/admin/club-bonus', 'ClubBonusController');
 });
-
-
 Route::group([
     'namespace' => 'App\Http\Controllers\Admin',
 ],function(){

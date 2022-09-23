@@ -31,9 +31,8 @@ class WidthdrawController extends Controller
                 ->addColumn('action', function ($get) {
                     $button = '<div class="btn-group btn-group-toggle" data-toggle="buttons">
                        <button type="button" data-id="' . $get->id . '" class="btn btn-sm btn-primary rounded mr-1 edit" data-toggle="modal" data-target=""><a href="' . URL::to('admin/aprove_withdraw/' . $get->id) . '" class="text-light">Approve</a></button>
-                      
                     </div>';
-                    return $button;
+                    return ($get->status==0 ?  $button : "Approved");
                 })
                 ->addColumn('ammount', function ($get) {
                     return floatval($get->ammount * 90) / 100;
@@ -96,6 +95,7 @@ class WidthdrawController extends Controller
                 ->addColumn('action', function ($get) {
                     $button = '<div class="btn-group btn-group-toggle" data-toggle="buttons">
                        <button type="button" data-id="' . $get->id . '" class="btn btn-sm btn-primary rounded mr-1 edit" data-toggle="modal" data-target=""><a href="' . URL::to('admin/aprove_withdraw/' . $get->id) . '" class="text-light">Approve</a></button>
+                       <button type="button" data-id="' . $get->id . '" class="btn btn-sm btn-danger rounded mr-1 remove" data-toggle="modal" data-target=""><a href="javascript:void(0)" class="text-light">X</a></button>
                     </div>';
                     return $button;
                 })
@@ -156,6 +156,13 @@ class WidthdrawController extends Controller
         $aprove->save();
         if ($aprove) {
             return redirect('/admin/withdraw_transaction')->with("status", "Withdraw Aproved Success");
+        }
+    }
+
+    public function destroy($id){
+        $delete=Withdraw::where('id',$id)->delete();
+        if($delete){
+            return response()->json(['message'=>'Deleted Successful']);
         }
     }
 }
