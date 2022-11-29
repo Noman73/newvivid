@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Frontuser;
 
 use App\Http\Controllers\Controller;
 use App\Http\Traits\ShareBalanceTrait;
-use App\ShareTransfer;
+use App\Models\ShareTransfer;
 use Illuminate\Http\Request;
 
 class ShareTransferController extends Controller

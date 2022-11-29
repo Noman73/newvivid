@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Fuser;
-use App\ShareBalance;
+use App\Models\Fuser;
+use App\Models\ShareBalance;
 use Illuminate\Http\Request;
 use DB;
 class ShareBalanceController extends Controller

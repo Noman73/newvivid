@@ -132,6 +132,12 @@
                                 <p>Transaction List</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ URL::to('/admin/club-bonus') }}" class="nav-link">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>Club Bonus</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item">

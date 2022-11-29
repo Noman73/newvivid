@@ -194,7 +194,7 @@ function SendData(){
   $('#invoice_page').on('select2:select',"select[name='fuser']", function (e){
   id=e.params.data.id;
   this_cat=$(this);
- axios.get('user/fuser_name/'+id)
+ axios.get("{{URL::to('user/fuser_name')}}/"+id)
       .then(function(response){
             $('#name').text(response.data);
             $('.name').removeClass('d-none');

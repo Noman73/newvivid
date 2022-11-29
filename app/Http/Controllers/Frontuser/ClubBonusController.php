@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Frontuser;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\ClubBonus;
+use App\Models\ClubLevel;
+use DataTables;
 class ClubBonusController extends Controller
 {
     /**
@@ -18,7 +20,25 @@ class ClubBonusController extends Controller
     }
     public function index()
     {
-        return view('frontend.club_bonus.club_bonus');
+        if (request()->ajax()){
+            $get = ClubLevel::with('user')->get();
+            return DataTables::of($get)
+                ->addIndexColumn()
+                ->addColumn('action', function ($get) {
+                    return "X";
+                })
+                ->addColumn('name',function ($get){
+                    return $get->user->name;
+                })
+                ->addColumn('username',function ($get){
+                    return $get->user->username;
+                })
+                ->addColumn('level',function ($get){
+                   return "Level-". $get->level;
+                })
+                ->rawColumns(['action'])->make(true);
+        }
+        return view('frontend.club_bonus.club_fund');
     }
 
 

@@ -69,6 +69,8 @@ Route::get('user/stockiest_list', "Frontuser\StockiestController@AllData");
 // password reset
 Route::get('/user/password_reset', 'Frontuser\ChangePasswordController@Form');
 Route::post('/user/password_reset', 'Frontuser\ChangePasswordController@Reset');
+Route::resource('/user/club_bonus', 'Frontuser\ClubBonusController');
+Route::resource('/user/my_club_bonus', 'Frontuser\MyClubBonusController');
 
 
 // Share Balance  Transfer 

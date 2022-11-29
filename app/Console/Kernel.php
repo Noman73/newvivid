@@ -16,7 +16,10 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('add:bonus')->dailyAt('23:30');
-        $schedule->command('test:cron')->everyMinute();
+        $schedule->command('club:level1')->dailyAt('20:00');
+        $schedule->command('club:level2')->dailyAt('20:30');
+        $schedule->command('club:level3')->dailyAt('21:00');
+        // $schedule->command('test:cron')->everyMinute();
     }
 
     /**

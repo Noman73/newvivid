@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\ClubBonus;
+use DataTables;
 class ClubBonusController extends Controller
 {
     /**
@@ -18,6 +19,24 @@ class ClubBonusController extends Controller
     }
     public function index()
     {
+        if (request()->ajax()){
+            $get = ClubBonus::with('user')->get();
+            return DataTables::of($get)
+                ->addIndexColumn()
+                ->addColumn('action', function ($get) {
+                    return "X";
+                })
+                ->addColumn('name',function ($get){
+                    return $get->user->name;
+                })
+                ->addColumn('username',function ($get){
+                    return $get->user->username;
+                })
+                ->addColumn('level',function ($get){
+                   return "Level-". $get->level;
+                })
+                ->rawColumns(['action'])->make(true);
+        }
         return view('pages.club_bonus.club_bonus');
     }
 

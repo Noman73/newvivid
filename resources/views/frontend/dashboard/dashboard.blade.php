@@ -178,7 +178,7 @@
                                         </div>
                                         <hr class="hr" style="border-top: 3px solid #fff">
                                         <div>This Month: <span class="float-right">৳ 0.00</span></div>
-                                        <div>Total: <span class="float-right">৳ 0.00</span></div>
+                                        <div>Total: <span class="float-right">৳ {{$club_bonus}}</span></div>
                                     </div>
                                 </div>
                             </div>

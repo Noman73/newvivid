@@ -31,11 +31,11 @@ class UserController extends Controller
     {
         if (request()->ajax()) {
             $get = DB::select("
-            SELECT fusers.id,ifnull(invoice.vp,0) vp, fusers.name,fusers.username,fusers.t_pin,fusers.adress,fusers.password,fs.username reffer_id,fs.name as refarrar_name from fusers
+            SELECT fusers.user_created_at,fusers.id,ifnull(invoice.vp,0) vp, fusers.name,fusers.username,fusers.t_pin,fusers.adress,fusers.password,fs.username reffer_id,fs.name as refarrar_name from fusers
             left JOIN fusers fs on fs.id=fusers.reffer_id
             left join (
             select sum(invoices.vp) vp,fuser_id from invoices group by fuser_id
-            ) invoice on fusers.id=invoice.fuser_id
+            ) invoice on fusers.id=invoice.fuser_id order by fusers.user_created_at desc
            ");
             return DataTables::of($get)
                 ->addIndexColumn()
@@ -72,6 +72,9 @@ class UserController extends Controller
                             return '';
                             break;
                     }
+                })
+                ->addColumn('j_date',function ($get){
+                    return date('d-m-Y',$get->user_created_at);
                 })
                 ->rawColumns(['action'])->make(true);
         }

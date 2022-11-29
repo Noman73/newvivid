@@ -43,6 +43,7 @@
                     <thead class="thead-light">
                      <tr>
                         <th>SL</th>
+                        <th>J. Date</th>
                         <th>Name</th>
                         <th>Username</th>
                         <th>T-pin</th>
@@ -83,6 +84,10 @@
             name:'DT_RowIndex',
             orderable:false,
             searchable:false
+          },
+          {
+            data:'j_date',
+            name:'j_date',
           },
           {
             data:'name',

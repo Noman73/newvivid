@@ -10,10 +10,9 @@ use App\Models\ShareBalance;
 use App\Models\Withdraw;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-
 trait DashboardAmountTrait
 {
-    use TestTrait, RefarralTrait, DailyWorkTrait, WalletBalanceTrait, BalanceTransferTrait, InvoiceTrait, TreeCountTrait, RefarralCountTrait, CentralBonusTrait, ShareBalanceTrait, FounderBalanceTrait;
+    use ClubBonusTrait,TestTrait, RefarralTrait, DailyWorkTrait, WalletBalanceTrait, BalanceTransferTrait, InvoiceTrait, TreeCountTrait, RefarralCountTrait, CentralBonusTrait, ShareBalanceTrait, FounderBalanceTrait;
     public function allAmount()
     {
         $myCentralBonus = $this->myCentralBonus(auth()->user()->id);
@@ -80,6 +79,7 @@ trait DashboardAmountTrait
             'monthlyFoundersBalance' => $monthlyFoundersBalance,
             'currentShareblc' => $currentShareblc,
             'founderCurrentBalance' => $founderCurrentBalance,
+            'club_bonus'=>number_format((float)$this->GetClubBonus(auth()->user()->id),2,'.',','),
         ];
     }
     public static function staticAllAmount()

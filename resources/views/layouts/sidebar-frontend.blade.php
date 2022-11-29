@@ -102,6 +102,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="{{URL::to('user/my_club_bonus')}}" class="nav-link">
+                  <i class="fas fa-circle nav-icon"></i>
+                  <p>Club Bonus</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="./index3.html" class="nav-link">
                   <i class="fas fa-circle nav-icon"></i>
                   <p>Salary</p>
@@ -280,7 +286,14 @@
               </p>
             </a>
           </li>
-          
+          <li class="nav-item">
+            <a href="{{URL::to('user/club_bonus')}}" class="nav-link">
+              <i class="nav-icon fas fa-tree"></i>
+              <p>
+                 Club Fund
+              </p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="{{URL::to('user/orphan_list')}}" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
